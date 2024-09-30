@@ -1,10 +1,10 @@
 // routes/transcriptRoute.js
+import express from 'express';
+import mongoose from 'mongoose';
+import multer from 'multer';
+import { GridFSBucket } from 'mongodb';
+import {Transcript} from '../models/transcriptModel.js';
 
-const express = require('express');
-const mongoose = require('mongoose');
-const multer = require('multer');
-const { GridFSBucket } = require('mongodb');
-const Transcript = require('../models/transcriptModel');
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ const upload = multer({ storage });
 const conn = mongoose.connection;
 
 // Upload transcript route
-router.post('/upload/:studentId', upload.single('transcript'), async (req, res) => {
+router.post('/:studentId', upload.single('transcript'), async (req, res) => {
   try {
     const { studentId } = req.params;
 
@@ -50,7 +50,7 @@ router.post('/upload/:studentId', upload.single('transcript'), async (req, res) 
 });
 
 // Get transcript by student ID
-router.get('/transcripts/:studentId', async (req, res) => {
+router.get('/:studentId', async (req, res) => {
   try {
     const { studentId } = req.params;
 
@@ -61,7 +61,7 @@ router.get('/transcripts/:studentId', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
 
 
 ///to be updated

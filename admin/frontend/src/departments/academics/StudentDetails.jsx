@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React,{useState} from 'react';
-import './styles/AddStudent.css'; // Assuming you have a separate CSS file for styling
+import React, { useState } from 'react';
+import './styles/studentDetails.css'; // Assuming you have a separate CSS file for styling
 import axios from 'axios'
 const StudentDetails = ({ student }) => {
 
@@ -21,11 +21,11 @@ const StudentDetails = ({ student }) => {
     const formData = new FormData();
     formData.append('transcript', selectedFile);
 
-    
+
 
     try {
       // eslint-disable-next-line no-unused-vars
-      const response = await axios.post(`/api/transcripts/upload/${student._id}`, formData, {
+      const response = await axios.post(`http://localhost:3055/transcript/${student._id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -36,142 +36,89 @@ const StudentDetails = ({ student }) => {
     }
   };
 
+  //retrieve transcripts per student
+  
+  axios.get(`http://localhost:3055/transcript/${student._id}`)
+  .then((res)=>{
+    console.log(res);
+  })
+  .catch((error)=>{
+    console.log(error);
+  })
+
+  // Function to calculate age from DOB
+  const calculateAge = (dob) => {
+    const birthDate = new Date(dob);
+    const ageDiff = Date.now() - birthDate.getTime();
+    const ageDate = new Date(ageDiff);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  };
+
+
 
   return (
-    <div className="add-student-container">
-      <h2>Student Details</h2>
-      <form>
-        <div className="form-row">
-          <label>First Name:</label>
-          <input
-            type="text"
-            name="Fname"
-            placeholder="First Name"
-            value={student.Fname}
-            readOnly
-            style={{ color: 'green' }}
-          />
-          <label>Surname:</label>
-          <input
-            type="text"
-            name="Surname"
-            placeholder="Surname"
-            value={student.Surname}
-            readOnly
-            style={{ color: 'green' }}
-          />
+    <div className="student-details-main-container">
+      <div className="add-student-container">
+        <h2>Student Details</h2>
+
+        <table className="students-table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Surname</th>
+              <th>Age</th>
+              <th>Class</th>
+              <th>Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr key={student._id}>
+              <td>{student.Fname}</td>
+              <td>{student.Surname}</td>
+              <td>{calculateAge(student.DOB)}</td>
+              <td>{student.Class}</td>
+              <td>{student.ParentPhoneNo}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table className="students-table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Surname</th>
+              <th>Age</th>
+              <th>Class</th>
+              <th>Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr key={student._id}>
+              <td>{student.Fname}</td>
+              <td>{student.Surname}</td>
+              <td>{calculateAge(student.DOB)}</td>
+              <td>{student.Class}</td>
+              <td>{student.ParentPhoneNo}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+<div>
+  {/* display the pdf from database here */}
+</div>
+
+      <div className='uploads'>
+        <form onSubmit={handleFileUpload} className='add-resources'>
+          <input type="file" accept=".pdf" onChange={handleFileChange} />
+          <button className='btn-update' type="submit">Upload student Transcript</button>
+        </form>
+
+        <div className='add-resources'>
+          <button className='btn-update'>Update Student Results</button>
         </div>
-
-        <div className="form-row">
-          <label>Last Name:</label>
-          <input
-            type="text"
-            name="Lastname"
-            placeholder="Last Name"
-            value={student.Lastname}
-            readOnly
-            style={{ color: 'green' }}
-          />
-          <label>Email:</label>
-          <input
-            type="email"
-            name="Email"
-            placeholder="Email"
-            value={student.Email}
-            readOnly
-            style={{ color: 'green' }}
-          />
-        </div>
-
-        <div className="form-row">
-          <label>Class:</label>
-          <input
-            type="text"
-            name="Class"
-            placeholder="Class"
-            value={student.Class}
-            readOnly
-            style={{ color: 'green' }}
-          />
-          <label>Admission Number:</label>
-          <input
-            type="text"
-            name="AdmNo"
-            placeholder="Admission Number"
-            value={student.AdmNo}
-            readOnly
-            style={{ color: 'green' }}
-          />
-        </div>
-
-        <div className="form-row">
-          <label>Parent Name:</label>
-          <input
-            type="text"
-            name="ParentName"
-            placeholder="Parent Name"
-            value={student.ParentName}
-            readOnly
-            style={{ color: 'green' }}
-          />
-          <label>Date of Birth:</label>
-          <input
-            type="date"
-            name="DOB"
-            value={new Date(student.DOB).toISOString().split('T')[0]}
-            readOnly
-            style={{ color: 'green' }}
-          />
-        </div>
-
-        <div className="form-row">
-          <label>Parent Phone No:</label>
-          <input
-            type="tel"
-            name="ParentPhoneNo"
-            placeholder="Parent Phone No"
-            value={student.ParentPhoneNo}
-            readOnly
-            style={{ color: 'green' }}
-          />
-        </div>
-
-        <div className="medical-condition">
-          <label>
-            <input
-              type="checkbox"
-              name="MedicalCondition"
-              checked={student.MedicalCondition}
-              readOnly
-              className="checkbox"
-            />
-            Any Medical Condition?
-          </label>
-        </div>
-
-        {student.MedicalCondition && (
-          <div>
-            <label>Condition Details:</label>
-            <input
-              style={{ width: '100%', height: '40px', color: 'green' }}
-              type="text"
-              name="ConditionDetails"
-              className="checkbox"
-              placeholder="Specify Condition"
-              value={student.ConditionDetails}
-              readOnly
-            />
-          </div>
-        )}
-
-        {/* No button since this is a read-only form */}
-      </form>
-
-
-      <form onSubmit={handleFileUpload}>
-        <input type="file" accept=".pdf" onChange={handleFileChange} />
-        <button type="submit">Upload Transcript</button>
-      </form>
+      </div>
     </div>
   );
 };
