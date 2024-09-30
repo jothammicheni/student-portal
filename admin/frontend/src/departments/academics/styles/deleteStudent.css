@@ -1,0 +1,59 @@
+.delete-container {
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .students-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .students-table th, .students-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .students-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .action-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #007BFF;
+  }
+  h3{
+    text-align: center;
+    padding: 15px;
+    color: #007BFF;
+  }
+  .btn-holder{
+     width: 100%;
+     margin-top: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+  }
+  .btn-del{
+    background-color: red;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 800; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  }
+  .btn-del:hover{
+    background-color: rgb(223, 70, 70);   
+    font-weight: 800; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }

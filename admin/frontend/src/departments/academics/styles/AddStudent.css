@@ -1,0 +1,85 @@
+.add-student-container {
+    width: 900px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #dfd3d3;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+ 
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    margin-bottom: 15px;
+  }
+  
+  .form-row input {
+    flex: 1;
+    min-width: 200px; /* Minimum width for inputs */
+    margin: 10px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px  solid rgb(159, 189, 194);
+  }
+  
+  .form-row input:last-child {
+    margin-right: 10px;
+  }
+  
+  .medical-condition {
+    margin-bottom: 15px;
+    
+  }
+  .checkbox{
+    margin: 10px;
+    outline: none;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column; /* Stack inputs vertically on small screens */
+    }
+  
+     .form-row input {
+        flex: 1;
+        min-width: 100%; /* Minimum width for inputs */
+        margin: 10px;
+        height: 40px;
+        padding: 15px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px  solid rgb(179, 236, 243);
+      }
+      
+    
+  
+    .form-row input:last-child {
+      margin-bottom: 0; /* Remove margin for the last input */
+    }
+  }
+  
