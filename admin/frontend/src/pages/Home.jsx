@@ -48,15 +48,15 @@ const Home = () => {
         {isLoggedIn ? (
           userCategory === 'academic' ? (
             showAdminAction === 'register-student' ? (
-              <AddStudent />
-            ) : showAdminAction === 'update-student' ? (
+              <AddStudent/>
+            ) : showAdminAction === 'update-result' ? (
               <Updateresults />
             ) : showAdminAction === 'show-student' ? (
               <ShowStudents setShowAdminAction={setShowAdminAction} setSelectedStudent={setSelectedStudent} />
             ) : showAdminAction === 'delete-student' ? (
               <DeleteStudent  student={selectedStudent} setShowAdminAction={setShowAdminAction}  />
             ) : showAdminAction === 'student-details' ? (
-              <StudentDetails student={selectedStudent} /> // Pass the selected student data
+              <StudentDetails student={selectedStudent} setShowAdminAction={setShowAdminAction}/> // Pass the selected student data
             ) : (
               <AddStudent />
             )

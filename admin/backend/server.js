@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
  import {PORT, CONNECTION_URL} from "./config.js";
  import studentRoute from "./routes/studentRoute.js";
+ import transcriptRoute  from './routes/transcriptRoute.js'
 const app = express();
 
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use(cors({
 
 //use the student router
 app.use('/student',studentRoute)
+app.use('/transcript',transcriptRoute)
 
 
 

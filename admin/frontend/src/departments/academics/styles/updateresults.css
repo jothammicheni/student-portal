@@ -1,0 +1,119 @@
+/* updateresults.css */
+
+/* General container styling */
+.update-results-container {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styling */
+  .update-results-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Flex container for tables */
+  .update-results-tables {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  }
+  
+  /* Individual table container */
+  .update-results-table-container {
+    flex: 1 1 45%; /* Grow and shrink as needed, with a basis of 45% */
+    min-width: 280px; /* Ensures tables don't get too narrow */
+    margin-top: 10px;
+  }
+  
+  /* Table styling */
+  .update-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .update-results-table th, 
+  .update-results-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .update-results-table th {
+    background-color: #007bff;
+    color: white;
+    text-align: left;
+  }
+  
+  .update-results-table td {
+    text-align: center;
+  }
+  
+  /* Input field styling */
+  .update-results-input {
+    width: 80px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+  }
+  
+  .update-results-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Submit button styling */
+  .update-results-button {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-results-button:hover {
+    background-color: #218838;
+  }
+  #studentId{
+    height: 40px;
+    outline: none;
+    margin-left: 10px;
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .update-results-tables {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .update-results-table-container {
+      flex: 1 1 100%;
+    }
+  
+    .update-results-input {
+      width: 100%;
+    }
+  
+    .update-results-button {
+      font-size: 18px;
+    }
+  }
+  
